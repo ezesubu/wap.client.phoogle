@@ -7,6 +7,7 @@
     <title>wap client phoongle</title>
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
     <!-- Place favicon.ico in the root directory -->
 
     <!-- build:css styles/vendor.css -->
@@ -22,21 +23,22 @@
     <script src="/bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
   </head>
-  <body>
-    <!--[if IE]>
-      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+  <body class="text-center">
 
-    <div class="container">
-      <div class="header">
-                <h3 class="text-muted">phoogle</h3>
-      </div>
-
-
+  <div class="container-fluid">
+   <div class="title">
+      <h1>PHOOGLE</h1>
+   </div>
+    <form>
+    <div class="form-group">
+      <input  class="form-control" id="searchInput" aria-describedby="Search" placeholder="Insert the name brand and model">
     </div>
 
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  </div>
 
-    <!-- build:js scripts/vendor.js -->
+  <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/modernizr/modernizr.js"></script>
     <script src="/bower_components/popper.js/dist/umd/popper.js"></script>
