@@ -10,13 +10,8 @@ $(function() {
       .fail(fnErrorResponse);
   });
 
-  $('#searchInput').disableAutoFill();
 
   $('#clearImages').on('click', function(){
-    $('.card-deck').html('');
-  });
-
-  $('#navCart').on('click', function(){
     $('.card-deck').html('');
   });
 
