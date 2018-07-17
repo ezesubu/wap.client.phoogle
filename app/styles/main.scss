@@ -60,7 +60,9 @@
   height: 36px;
   line-height: 27px;
 }
-
+.autocomplete-suggestion {
+  cursor: pointer;
+}
 #searchInput{
   max-width: 500px;
   margin: 0 auto;
