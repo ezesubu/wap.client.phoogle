@@ -19,7 +19,7 @@ $(function() {
 
 
   $('#clearImages').on('click', function(){
-    $('.card-deck').html('');
+    $('.card-columns').html('');
   });
 
   $('#searchInput').autocomplete({
@@ -48,8 +48,9 @@ function fnShowPhones(data){
     });
 
     let cardImage= $('<img>',{
-      'class': 'card-img-top',
-      'src': 'https://picsum.photos/200/?blur'
+      'class': 'phone-image card-img-top',
+      'src': phone.image
+
     });
     let cardBody = $('<div>',{
       'class': 'card-body',
@@ -96,7 +97,7 @@ function fnShowPhones(data){
     CardUlGruop.append(cardBrand,cardResolution, cardTechnologyn );
     cardBody.append(cardTitle,CardUlGruop);
     card.append(cardImage,cardBody,cardBtns);
-    $('.card-deck').append(card);
+    $('.card-columns').append(card);
   });
 }
 
