@@ -1,5 +1,5 @@
 'use strict';
-const APIURL = 'http://localhost:8080/phoneAPI/';
+const APIURL = 'http://localhost:8080/phoogleApi/';
 
 $(function() {
   $('#findPhone').on('click', function(){
