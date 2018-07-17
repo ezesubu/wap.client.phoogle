@@ -25,6 +25,8 @@ $(function () {
 
   $('#clearImages').on('click', function () {
     $('.card-columns').html('');
+
+    $('#searchInput').val('');
   });
 
   $('#searchInput').autocomplete({
@@ -41,6 +43,7 @@ $(function () {
       }
     },
     onSelect: function (suggestion) {
+      $('#searchInput').val('');
       fnShowPhones([suggestion.data])
     }
     });
@@ -69,6 +72,7 @@ $(function () {
   });
 
   function fnShowPhones(data) {
+    $('#searchInput').val('');
     $('#loader').hide();
     $.each(data, function (index, phone) {
       let card = $('<div>', {
