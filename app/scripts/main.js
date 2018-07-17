@@ -101,6 +101,7 @@ function fnShowPhones(data){
 }
 
 function fnsetCart(data){
+  $('#cartList tbody').html('');
   let total = 0;
   $('#loader').hide();
   $.each(data, function (index, phone) {
