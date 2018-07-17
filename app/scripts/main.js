@@ -2,12 +2,12 @@
 const APIURL = 'http://localhost:8080/phoogleApi/';
 
 $(function () {
+
+  $.get(APIURL + 'Session')
+    .done(fnCheckSession)
+    .fail(fnNoSession);
+
   $('#findPhone').on('click', function () {
-
-    $.get(APIURL + 'Session')
-      .done(fnCheckSession)
-      .fail(fnNoSession);
-
     $('#loader').show();
     let brand = $('#searchInput').val();
     $.get(APIURL + 'search?', {brand})
@@ -23,7 +23,7 @@ $(function () {
   });
 
 
-  $('#clearImages').on('click', function () {
+  $('#clearImages').on('click', function(){
     $('.card-columns').html('');
 
     $('#searchInput').autocomplete({
@@ -40,30 +40,28 @@ $(function () {
         fnShowPhones([suggestion.data])
       }
     });
+  });
 
-    $('#signInForm').submit(function () {
-      $('#loader').show();
-      $('#navLogout').hide();
-      let username = $('#inputUsername').val();
-      let password = $('#inputPassword').val();
-      $.get(APIURL + 'Login?', {username, password})
-        .done(fnLogedIn)
+  $('#signInForm').submit(function () {
+    $('#loader').show();
+    $('#navLogout').hide();
+    let username = $('#inputUsername').val();
+    let password = $('#inputPassword').val();
+    $.get(APIURL + 'Login?', {username, password})
+      .done(fnLogedIn)
+      .fail(fnErrorResponse);
+    return false;
+  });
+
+  $('#navLogout').click(function () {
+    var r = confirm('Do you want logout?');
+    if (r == true) {
+      $.get(APIURL + 'Logout')
+        .done(fnLogedOut)
         .fail(fnErrorResponse);
+    } else {
       return false;
-    });
-
-    $('#navLogout').click(function () {
-      var r = confirm('Do you want logout?');
-      if (r == true) {
-        $.get(APIURL + 'Logout')
-          .done(fnLogedOut)
-          .fail(fnErrorResponse);
-      } else {
-        return false;
-      }
-
-    });
-
+    }
 
   });
 
@@ -75,7 +73,7 @@ $(function () {
         'style': 'width: 18rem;'
       });
 
-      let cardImage = $('<img>', {
+      let cardImage= $('<img>',{
         'class': 'phone-image card-img-top',
         'src': phone.image
       });
@@ -141,37 +139,39 @@ $(function () {
     $('#cartList tbody').append(item);
   }
 
+  function fnErrorResponse(xhr, status, exception) {
+    console.log(xhr, status, exception);
+  }
+
+  function fnLogedIn(data) {
+    $('#loginModal').modal('hide');
+    $('#navLogin').hide();
+    $('#navLogout').show();
+    var x = document.cookie;
+    debugger;
+    console.log(x);
+    console.log(data);
+  }
+
+  function fnLogedOut() {
+    $('#navLogin').show();
+    $('#navLogout').hide();
+  }
+
+  function fnCheckSession(data) {
+    if (data.length > 0) {
+      $('#navLogin').hide();
+    }
+  }
+  function fnNoSession(xhr, status, exception) {
+    if(xhr.status === 588)
+    {
+      $('#navLogout').hide();
+    }
+  }
+
 
 });
 
-function fnErrorResponse(xhr, status, exception) {
-  console.log(xhr, status, exception);
-}
 
-function fnLogedIn(data) {
-  debugger;
-  $('#loginModal').modal('hide');
-  $('#navLogin').hide();
-  $('#navLogout').show();
-  var x = document.cookie;
-  debugger;
-  console.log(x);
-  console.log(data);
-}
-function fnLogedOut() {
-  $('#navLogin').show();
-  $('#navLogout').hide();
-}
 
-function fnCheckSession(data) {
-  debugger;
-  if (data.length > 0) {
-    $('#navLogin').hide();
-  }
-}
-function fnNoSession(xhr, status, exception) {
-  if(xhr.status === 588)
-  {
-    $('#navLogout').hide();
-  }
-}
