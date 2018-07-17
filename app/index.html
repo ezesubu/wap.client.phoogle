@@ -34,6 +34,9 @@
   <li>
     <a class="nav-link" id="navLogout" data-toggle="modal" data-target="#logoutModal" href="#">Logout</a>
   </li>
+  <li>
+    <a class="nav-link" id="navRegister" data-toggle="modal" data-target="#registerModal" href="#">Register</a>
+  </li>
 </ul>
 <div class="container ">
   <div class="title">
@@ -115,6 +118,29 @@
   </div>
 </div>
 
+
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form class="form-logIn" id="logInForm">
+          <div class="form-group">
+            <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+            <label for="loginUsername" class="sr-only">Username</label>
+            <input type="text" id="loginUsername" name="username" class="form-control" placeholder="Username"
+                   required autofocus>
+            <div class="form-group">
+            </div>
+            <label for="loginPassword" class="sr-only">Password</label>
+            <input type="password" id="loginPassword" name="password" class="form-control" placeholder="Password"
+                   required>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- build:js scripts/vendor.js -->
 <!-- bower:js -->
 <script src="/bower_components/modernizr/modernizr.js"></script>
