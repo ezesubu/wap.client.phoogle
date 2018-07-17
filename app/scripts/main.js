@@ -4,9 +4,16 @@ const APIURL = 'http://localhost:8080/phoogleApi/';
 $(function() {
   $('#findPhone').on('click', function(){
     $('#loader').show();
-     let brand = $('#searchInput').val();
+    let brand = $('#searchInput').val();
     $.get(APIURL + 'search?', {brand})
       .done(fnShowPhones)
+      .fail(fnErrorResponse);
+  });
+
+  $('#navCart').on('click', function(){
+    $('#navCart').show();
+    $.get(APIURL + 'cart')
+      .done(fnsetCart)
       .fail(fnErrorResponse);
   });
 
@@ -80,7 +87,9 @@ function fnShowPhones(data){
     }).on('click', function(){
       let urlPost = APIURL + 'cart';
       $.post(urlPost,  { brand: $(this).attr('id')})
-        .done(setCart)
+        .done(function () {
+            alert('Item added to card');
+        })
         .error(fnErrorResponse);
     });
     cardBtns.append(cardBottonBuy);
@@ -91,8 +100,16 @@ function fnShowPhones(data){
   });
 }
 
-function setCart(){
-  console.log(data)
+function fnsetCart(data){
+  let total = 0;
+  $('#loader').hide();
+  $.each(data, function (index, phone) {
+    let item = $('<tr>').append($('<td>',{'text': phone.deviceName}), $('<td>',{'text': phone.price}));
+    total += phone.price;
+    $('#cartList tbody').append(item);
+  });
+  let item = $('<tr>').append($('<td>',{'text': 'Total' }), $('<td>',{'text': total}));
+  $('#cartList tbody').append(item);
 }
 function fnErrorResponse(xhr, status, exception){
   console.log(xhr, status, exception);
