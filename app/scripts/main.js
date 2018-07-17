@@ -80,7 +80,14 @@ $(function () {
     } else {
       return false;
     }
+  });
 
+  $('#xlogin').click(function () {
+    $('#loginModal').modal('toggle');
+  });
+
+  $('#xRegister').click(function () {
+    $('#registerModal').modal('toggle');
   });
 
   function fnShowPhones(data) {
