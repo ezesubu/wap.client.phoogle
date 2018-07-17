@@ -25,20 +25,24 @@ $(function () {
 
   $('#clearImages').on('click', function () {
     $('.card-columns').html('');
+  });
 
-    $('#searchInput').autocomplete({
-      serviceUrl: APIURL + 'search',
-      paramName: 'brand',
-      transformResult: function (response) {
+  $('#searchInput').autocomplete({
+    serviceUrl: APIURL + 'search',
+    paramName: 'brand',
+    transformResult: function (response) {
+      var responseFormat =  JSON.parse(response);
+      if(responseFormat.length > 0){
         return {
-          suggestions: $.map(JSON.parse(response), function (dataItem) {
+          suggestions: $.map(responseFormat, function (dataItem) {
             return {value: dataItem.deviceName, data: dataItem};
           })
         };
-      },
-      onSelect: function (suggestion) {
-        fnShowPhones([suggestion.data])
       }
+    },
+    onSelect: function (suggestion) {
+      fnShowPhones([suggestion.data])
+    }
     });
 
     $('#signInForm').submit(function () {
@@ -126,8 +130,8 @@ $(function () {
       card.append(cardImage, cardBody, cardBtns);
       $('.card-columns').append(card);
     });
-  }
 
+  }
   function fnsetCart(data) {
     $('#cartList tbody').html('');
     let total = 0;
@@ -142,36 +146,35 @@ $(function () {
   }
 
 
-});
-
-function fnErrorResponse(xhr, status, exception) {
-  console.log(xhr, status, exception);
-}
-
-function fnLogedIn(data) {
-  debugger;
-  $('#loginModal').modal('hide');
-  $('#navLogin').hide();
-  $('#navLogout').show();
-  var x = document.cookie;
-  debugger;
-  console.log(x);
-  console.log(data);
-}
-function fnLogedOut() {
-  $('#navLogin').show();
-  $('#navLogout').hide();
-}
-
-function fnCheckSession(data) {
-  debugger;
-  if (data.length > 0) {
-    $('#navLogin').hide();
+  function fnErrorResponse(xhr, status, exception) {
+    console.log(xhr, status, exception);
   }
-}
-function fnNoSession(xhr, status, exception) {
-  if(xhr.status === 588)
-  {
+
+  function fnLogedIn(data) {
+    debugger;
+    $('#loginModal').modal('hide');
+    $('#navLogin').hide();
+    $('#navLogout').show();
+    var x = document.cookie;
+    debugger;
+    console.log(x);
+    console.log(data);
+  }
+
+  function fnLogedOut() {
+    $('#navLogin').show();
     $('#navLogout').hide();
   }
-}
+
+  function fnCheckSession(data) {
+    debugger;
+    if (data.length > 0) {
+      $('#navLogin').hide();
+    }
+  }
+
+  function fnNoSession(xhr, status, exception) {
+    if (xhr.status === 588) {
+      $('#navLogout').hide();
+    }
+  }
