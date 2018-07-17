@@ -59,8 +59,8 @@ $(function () {
     return false;
   });
 
+
   $('#registerBtn').on('click', function () {
-    alert('hi from sihgnup???');
     $('#loader').show();
     $('#navLogout').hide();
     let username = $('#usernameR').val();
@@ -166,17 +166,18 @@ $(function () {
     $('#loginModal').modal('hide');
     $('#registerModal').modal('hide');
     $('#navLogin').hide();
+    $('#navRegister').hide();
     $('#navLogout').show();
     console.log(data);
   }
 
   function fnLogedOut() {
     $('#navLogin').show();
+    $('#navRegister').show();
     $('#navLogout').hide();
   }
 
   function fnCheckSession(data) {
-    debugger;
     if (data.length > 0) {
       $('#navLogin').hide();
     }
