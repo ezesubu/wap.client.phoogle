@@ -28,7 +28,8 @@
   <li class="nav-item">
     <a class="nav-link" id="navCart" data-toggle="modal" data-target="#cartModal" href="#">My cart</a>
   </li>  <li class="nav-item">
-    <a class="nav-link" id="navLogin" data-toggle="modal" data-target="#loginModal" href="#">Login</a>
+  <a class="nav-link" id="navLogin" data-toggle="modal" data-target="#loginModal" href="#">Login</a>
+  <a class="nav-link" id="navLogout" data-toggle="modal" data-target="#logoutModal" href="#">Logout</a>
 </li>
 </ul>
 <div class="container ">
@@ -97,15 +98,17 @@
         </button>
       </div>
       <div class="modal-body">
-        <form class="form-signin">
+        <form class="form-signin" id="signInForm">
           <img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
           <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
           <!--<label for="inputEmail" class="sr-only">Email address</label>-->
           <!--<input type="text" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email address" required autofocus>-->
           <label for="inputUsername" class="sr-only">Username</label>
-          <input type="text" id="inputUsername" name="inputUsername" class="form-control" placeholder="Username" required autofocus>
+          <input type="text" id="inputUsername" name="inputUsername" class="form-control" placeholder="Username"
+                 required autofocus>
           <label for="inputPassword" class="sr-only">Password</label>
-          <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Password" required>
+          <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Password"
+                 required>
           <div class="checkbox mb-3">
             <label>
               <input type="checkbox" value="remember-me"> Remember me
@@ -115,6 +118,7 @@
           <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
         </form>
       </div>
+    </div>
   </div>
 </div>
 
