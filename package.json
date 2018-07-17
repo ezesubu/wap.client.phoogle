@@ -42,5 +42,8 @@
         "single"
       ]
     }
+  },
+  "dependencies": {
+    "devbridge-autocomplete": "^1.4.8"
   }
 }
