@@ -56,6 +56,18 @@ $(function () {
     return false;
   });
 
+  $('#registerBtn').on('click', function () {
+    alert('hi from sihgnup???');
+    $('#loader').show();
+    $('#navLogout').hide();
+    let username = $('#usernameR').val();
+    let password = $('#passwordR').val();
+    $.get(APIURL + 'signup?', {username, password})
+      .done(fnLogedIn)
+      .fail(fnErrorResponse);
+    return false;
+  });
+
   $('#navLogout').click(function () {
     var r = confirm('Do you want logout?');
     if (r == true) {
@@ -148,11 +160,9 @@ $(function () {
 
   function fnLogedIn(data) {
     $('#loginModal').modal('hide');
+    $('#registerModal').modal('hide');
     $('#navLogin').hide();
     $('#navLogout').show();
-    var x = document.cookie;
-    debugger;
-    console.log(x);
     console.log(data);
   }
 
