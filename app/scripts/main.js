@@ -162,6 +162,7 @@ $(function () {
   }
 
   function fnCheckSession(data) {
+    debugger;
     if (data.length > 0) {
       $('#navLogin').hide();
     }

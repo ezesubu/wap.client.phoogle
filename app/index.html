@@ -66,7 +66,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">My Cart</h5>
+        <h5 class="modal-title">My Cart</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -94,31 +94,21 @@
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Login</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
       <div class="modal-body">
         <form class="form-signin" id="signInForm">
-          <img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-          <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-          <!--<label for="inputEmail" class="sr-only">Email address</label>-->
-          <!--<input type="text" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email address" required autofocus>-->
-          <label for="inputUsername" class="sr-only">Username</label>
-          <input type="text" id="inputUsername" name="inputUsername" class="form-control" placeholder="Username"
-                 required autofocus>
-          <label for="inputPassword" class="sr-only">Password</label>
-          <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Password"
-                 required>
-          <div class="checkbox mb-3">
-            <label>
-              <input type="checkbox" value="remember-me"> Remember me
-            </label>
+          <div class="form-group">
+            <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
+              <label for="inputUsername" class="sr-only">Username</label>
+              <input type="text" id="inputUsername" name="inputUsername" class="form-control" placeholder="Username"
+                     required autofocus>
+            <div class="form-group">
+            </div>
+              <label for="inputPassword" class="sr-only">Password</label>
+              <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Password"
+                   required>
           </div>
           <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-          <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
+
         </form>
       </div>
     </div>
